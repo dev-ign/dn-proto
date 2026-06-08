@@ -1,0 +1,85 @@
+@use 'tokens' as t;
+@use 'utilities' as u;
+
+.popular-smoothies {
+  background: t.$white;
+  padding: 56px 20px 64px;
+
+  @include u.respond-to(md) {
+    padding: 64px 40px;
+  }
+
+  @include u.respond-to(xl) {
+    padding: 80px 80px 64px;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+
+  &__title {
+    font-family: t.$font-display;
+    font-style: italic;
+    font-size: 28px;
+    color: t.$ink;
+    margin: 0;
+
+    @include u.respond-to(md) {
+      font-size: 36px;
+    }
+  }
+
+  &__view-all {
+    font-family: t.$font-body;
+    font-weight: 700;
+    font-size: 13px;
+    color: t.$red;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    white-space: nowrap;
+    transition:
+      color 200ms ease,
+      transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+      text-shadow 220ms ease;
+
+    &:hover {
+      color: t.$red-deep;
+      transform: translateX(3px);
+      text-shadow: 0 8px 18px rgba(225, 41, 32, 0.2);
+    }
+
+    &:focus-visible {
+      outline: 2px solid rgba(225, 41, 32, 0.42);
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+  }
+
+  // Card row — 2-up wrapped mobile, single row desktop with gaps
+  &__grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    > * {
+      flex: 1 1 calc(50% - 6px);
+      min-width: 0;
+    }
+
+    @include u.respond-to(lg) {
+      flex-wrap: nowrap;
+      gap: 32px;
+
+      > * {
+        flex: 1 1 0;
+      }
+    }
+  }
+}

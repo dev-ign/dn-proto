@@ -1,0 +1,380 @@
+@use 'tokens' as t;
+@use 'utilities' as u;
+
+// ── Builder page base ─────────────────────────────────────────
+.sb-page {
+  min-height: 100dvh;
+  font-family: t.$font-body;
+  color: t.$ink;
+}
+
+// ── Selectable card ───────────────────────────────────────────
+.b-opt {
+  position: relative;
+  border: 1.5px solid #E6E6E6;
+  background: #fff;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: border-color .16s, box-shadow .16s;
+  user-select: none;
+  outline: none;
+
+  &:hover { border-color: #cfcfcf; box-shadow: 0 4px 14px rgba(17,17,17,.06); }
+
+  &--sel {
+    border-color: #E1241B;
+    box-shadow: 0 0 0 3px rgba(225,36,27,.12);
+  }
+}
+
+.b-tick {
+  position: absolute;
+  top: 8px; right: 8px;
+  width: 22px; height: 22px;
+  border-radius: 999px;
+  background: #E1241B;
+  display: grid; place-items: center;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity .16s, transform .16s;
+
+  .b-opt--sel & {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// ── Step header ───────────────────────────────────────────────
+.b-step-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.b-step-num {
+  font-family: t.$font-display;
+  font-style: italic;
+  font-size: 26px;
+  color: #E1241B;
+  line-height: 1;
+}
+
+.b-step-title {
+  font-family: t.$font-body;
+  font-weight: 700;
+  font-size: 15px;
+  color: t.$ink;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.b-step-hint {
+  margin-left: auto;
+  font-family: t.$font-body;
+  font-size: 11.5px;
+  color: #8C8C8C;
+}
+
+// ── Step section divider ───────────────────────────────────────
+.b-section {
+  padding: 22px 0;
+  border-top: 1px solid #EFEFEF;
+
+  &:first-child { border-top: none; }
+}
+
+// ── Desktop layout ────────────────────────────────────────────
+.sb-desktop {
+  display: grid;
+  grid-template-columns: 1.18fr 1fr;
+  height: 100dvh;
+  overflow: hidden;
+
+  &__left {
+    overflow-y: auto;
+    background: #fff;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0,0,0,.14) transparent;
+
+    &::-webkit-scrollbar { width: 8px; }
+    &::-webkit-scrollbar-thumb { background: rgba(0,0,0,.14); border-radius: 8px; }
+    &::-webkit-scrollbar-track { background: transparent; }
+  }
+
+  &__header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: #fff;
+    border-bottom: 1px solid #EFEFEF;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 64px;
+    gap: 16px;
+  }
+
+  &__logo { height: 32px; display: block; }
+
+  &__header-title {
+    font-family: t.$font-display;
+    font-style: italic;
+    font-size: 22px;
+    letter-spacing: 0.04em;
+    color: t.$ink;
+    transform: skewX(-5deg);
+  }
+
+  &__cart {
+    position: relative;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    color: t.$ink;
+  }
+
+  &__cart-count {
+    position: absolute;
+    top: 0; right: 0;
+    width: 18px; height: 18px;
+    background: t.$red;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 700;
+    color: #fff;
+    display: grid;
+    place-items: center;
+    font-family: t.$font-body;
+  }
+
+  &__body {
+    padding: 36px 40px 60px;
+  }
+
+  &__kicker {
+    font-family: t.$font-body;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: t.$red;
+    margin-bottom: 8px;
+  }
+
+  &__heading {
+    font-family: t.$font-display;
+    font-style: italic;
+    font-size: 44px;
+    line-height: 0.92;
+    color: t.$ink;
+    letter-spacing: 0.01em;
+    margin: 0 0 24px;
+    transform: skewX(-5deg);
+    transform-origin: left;
+  }
+
+  &__right {
+    position: sticky;
+    top: 0;
+    height: 100dvh;
+    background: radial-gradient(circle at 55% 40%, #1c1c1c 0%, #0a0a0a 60%);
+    display: grid;
+    grid-template-rows: minmax(390px, 1fr) auto;
+    align-items: center;
+    gap: 18px;
+    padding: 24px 24px 0;
+    overflow: hidden;
+  }
+
+  &__preview {
+    position: relative;
+    z-index: 1;
+    min-height: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 0 8px;
+  }
+
+  &__glass-glow {
+    position: absolute;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(225,36,27,.12) 0%, transparent 70%);
+    filter: blur(40px);
+    pointer-events: none;
+  }
+
+  &__glass-label {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  &__glass-sub {
+    font-family: t.$font-body;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.45);
+    margin-bottom: 6px;
+  }
+
+  &__glass-name {
+    font-family: t.$font-display;
+    font-style: italic;
+    font-size: 36px;
+    color: #fff;
+    letter-spacing: 0.02em;
+    line-height: 1;
+  }
+
+  &__receipt {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-height: min(42dvh, 360px);
+    overflow-y: auto;
+    padding: 0 0 24px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,.26) transparent;
+
+    &::-webkit-scrollbar { width: 8px; }
+    &::-webkit-scrollbar-thumb { background: rgba(255,255,255,.26); border-radius: 8px; }
+    &::-webkit-scrollbar-track { background: transparent; }
+  }
+}
+
+// ── Mobile layout ─────────────────────────────────────────────
+.sb-mobile {
+  background: #fff;
+  min-height: 100dvh;
+  padding-bottom: 100px;
+
+  &__header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: #0a0a0a;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    height: 56px;
+    gap: 16px;
+  }
+
+  &__back {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    padding: 6px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__header-title {
+    font-family: t.$font-display;
+    font-style: italic;
+    font-size: 20px;
+    letter-spacing: 0.04em;
+    color: #fff;
+    transform: skewX(-5deg);
+  }
+
+  &__cart {
+    position: relative;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    color: #fff;
+  }
+
+  &__cart-count {
+    position: absolute;
+    top: 0; right: 0;
+    width: 16px; height: 16px;
+    background: t.$red;
+    border-radius: 999px;
+    font-size: 9px;
+    font-weight: 700;
+    color: #fff;
+    display: grid;
+    place-items: center;
+    font-family: t.$font-body;
+  }
+
+  &__steps {
+    padding: 0 20px;
+  }
+
+  // sticky bottom bar
+  &__bar {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 30;
+    background: #fff;
+    border-top: 1px solid #E6E6E6;
+    box-shadow: 0 -4px 20px rgba(17,17,17,.08);
+    padding: 10px 16px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__bar-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__bar-name {
+    font-family: t.$font-display;
+    font-style: italic;
+    font-size: 18px;
+    color: t.$ink;
+    line-height: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__bar-macros {
+    font-family: t.$font-body;
+    font-size: 11px;
+    color: #8C8C8C;
+    margin-top: 2px;
+  }
+
+  &__bar-btn {
+    appearance: none;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 14px;
+    font-family: t.$font-display;
+    font-style: italic;
+    font-size: 20px;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: background .25s, box-shadow .25s;
+
+    &--add {
+      background: t.$red-cta;
+      color: #fff;
+      box-shadow: 0 6px 18px rgba(228,27,37,.3);
+    }
+
+    &--added {
+      background: #1c8a3c;
+      color: #fff;
+      box-shadow: 0 6px 18px rgba(28,138,60,.28);
+    }
+  }
+}

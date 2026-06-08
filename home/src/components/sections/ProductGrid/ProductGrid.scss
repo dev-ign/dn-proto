@@ -1,0 +1,49 @@
+@use 'tokens' as t;
+@use 'utilities' as u;
+
+.product-grid {
+  background: #f6f6f6;
+  padding: 56px 20px 72px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+
+  @include u.respond-to(md) {
+    padding: 64px 40px 72px;
+  }
+
+  @include u.respond-to(xl) {
+    padding: 72px 80px;
+  }
+
+  &__heading {
+    font-family: t.$font-display;
+    font-style: italic;
+    font-size: 32px;
+    color: t.$ink;
+    text-align: center;
+    margin: 0;
+
+    @include u.respond-to(md) {
+      font-size: 40px;
+    }
+
+    @include u.respond-to(lg) {
+      font-size: 48px;
+    }
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    width: 100%;
+
+    @include u.respond-to(lg) {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      justify-items: stretch;
+    }
+  }
+}

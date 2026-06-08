@@ -1,0 +1,28 @@
+@use 'sass:map';
+@use 'tokens' as t;
+
+$breakpoints: (
+  sm:  t.$bp-sm,
+  md:  t.$bp-md,
+  lg:  t.$bp-lg,
+  xl:  t.$bp-xl,
+);
+
+@mixin respond-to($bp) {
+  @media (min-width: #{map.get($breakpoints, $bp)}) {
+    @content;
+  }
+}
+
+// Section padding helper
+@mixin section-padding($vertical: 80px) {
+  padding: $vertical t.$section-px-mobile;
+
+  @include respond-to(md) {
+    padding: $vertical t.$section-px-tablet;
+  }
+
+  @include respond-to(xl) {
+    padding: $vertical t.$section-px-desktop;
+  }
+}

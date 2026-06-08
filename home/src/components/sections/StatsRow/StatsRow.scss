@@ -1,0 +1,57 @@
+@use 'tokens' as t;
+
+.stats-row {
+  background: t.$white;
+  border-bottom: 1px solid t.$border;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  @media (min-width: t.$bp-md) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 20px 8px;
+    border-left: 1px solid t.$border;
+
+    &:first-child {
+      border-left: none;
+    }
+
+    // On mobile, remove the left border from the 3rd item (first of second row)
+    &:nth-child(3) {
+      border-left: none;
+
+      @media (min-width: t.$bp-md) {
+        border-left: 1px solid t.$border;
+      }
+    }
+  }
+
+  &__value {
+    font-family: t.$font-display;
+    font-style: italic;
+    font-size: 32px;
+    line-height: 1;
+    color: t.$ink;
+
+    @media (min-width: t.$bp-md) {
+      font-size: 36px;
+    }
+  }
+
+  &__label {
+    font-family: t.$font-body;
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: #666;
+    text-transform: uppercase;
+    text-align: center;
+  }
+}

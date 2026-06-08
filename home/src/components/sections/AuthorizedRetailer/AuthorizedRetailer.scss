@@ -1,0 +1,53 @@
+@use 'tokens' as t;
+@use 'utilities' as u;
+
+.authorized-retailer {
+  background-image: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 60%, #111 100%);
+  padding: 28px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+
+  @include u.respond-to(md) {
+    padding: 28px 40px;
+  }
+
+  @include u.respond-to(xl) {
+    padding: 28px 80px;
+  }
+
+  &__label {
+    font-family: t.$font-body;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    color: t.$gray;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  &__brands {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    width: 100%;
+
+    @include u.respond-to(md) {
+      gap: 0;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+    }
+  }
+
+  &__brand {
+    font-family: t.$font-body;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    color: #d9d9d9;
+    white-space: nowrap;
+  }
+}

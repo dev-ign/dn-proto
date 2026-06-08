@@ -1,0 +1,89 @@
+// @use must be first for Sass compiler; @tailwind directives are opaque to Sass
+@use 'tokens';
+@use 'typography';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// Base resets
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  background: #fff;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+button:focus-visible {
+  outline-offset: 4px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.hero-section__content > *,
+.stats-row__item,
+.protein-powerhouse__text > *,
+.performance-supplements__text > *,
+.customize-cta__text > *,
+.protein-powerhouse__image-wrap,
+.performance-supplements__image-wrap,
+.popular-smoothies__grid .smoothie-card,
+.product-grid__cards .product-card {
+  will-change: transform, opacity;
+}
+
+// Scrollbar styling for horizontal scroll sections
+.scroll-x {
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.14) transparent;
+
+  &::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.14);
+    border-radius: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

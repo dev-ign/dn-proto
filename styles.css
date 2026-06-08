@@ -1,0 +1,206 @@
+/* ─────────────────────────────────────────────────────────────
+   Discount Nutrition — Smoothie Builder
+   Brand tokens
+   ───────────────────────────────────────────────────────────── */
+:root {
+  --red: #E1241B;          /* DN primary red */
+  --red-cta: #E41B25;      /* CTA red */
+  --red-deep: #B5140E;
+  --ink: #111111;
+  --ink-2: #333333;
+  --gray: #8C8C8C;
+  --gray-2: #B3B3B3;
+  --line: #E6E6E6;
+  --line-soft: #EFEFEF;
+  --surface: #FAFAFA;
+  --surface-2: #F4F4F4;
+  --white: #FFFFFF;
+  --yellow: #FFDD00;
+  --shadow-card: 0 1px 2px rgba(17,17,17,.04), 0 6px 20px rgba(17,17,17,.06);
+  --shadow-pop: 0 8px 30px rgba(17,17,17,.12);
+  --r-lg: 20px;
+  --r-md: 14px;
+  --r-sm: 10px;
+  --font-display: "Bebas Neue", "Anton", sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* presentation stage */
+.stage {
+  min-height: 100vh;
+  background:
+    radial-gradient(1200px 600px at 50% -10%, #1a1a1a 0%, #0c0c0c 55%, #070707 100%);
+  padding: 40px 32px 80px;
+}
+
+.stage-head {
+  max-width: 1320px;
+  margin: 0 auto 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.stage-title {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.stage-title img { height: 38px; display: block; }
+.stage-title .divider { width: 1px; height: 30px; background: rgba(255,255,255,.16); }
+.stage-title .label {
+  font-family: var(--font-display);
+  font-size: 24px;
+  letter-spacing: .04em;
+  color: #fff;
+  font-style: italic;
+  transform: skewX(-6deg);
+}
+.stage-title .label em { color: var(--red); font-style: italic; }
+
+/* device toggle */
+.seg {
+  display: inline-flex;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 999px;
+  padding: 4px;
+  gap: 2px;
+}
+.seg button {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: rgba(255,255,255,.6);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: .01em;
+  padding: 8px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  transition: color .18s, background .18s;
+}
+.seg button.on {
+  background: var(--red);
+  color: #fff;
+}
+.seg button:not(.on):hover { color: #fff; }
+
+.stage-body {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.hint {
+  text-align: center;
+  color: rgba(255,255,255,.34);
+  font-size: 12.5px;
+  margin-top: 26px;
+  letter-spacing: .02em;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Shared builder typography
+   ───────────────────────────────────────────────────────────── */
+.kicker {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+.h-display {
+  font-family: var(--font-display);
+  font-style: italic;
+  transform: skewX(-5deg);
+  transform-origin: left;
+  letter-spacing: .01em;
+  line-height: .92;
+  margin: 0;
+}
+.step-num {
+  font-family: var(--font-display);
+  color: var(--red);
+  font-style: italic;
+}
+
+/* scrollbars inside frames */
+.dn-scroll::-webkit-scrollbar { width: 8px; height: 8px; }
+.dn-scroll::-webkit-scrollbar-thumb { background: rgba(0,0,0,.14); border-radius: 8px; }
+.dn-scroll::-webkit-scrollbar-track { background: transparent; }
+
+/* selectable card base */
+.opt {
+  position: relative;
+  border: 1.5px solid var(--line);
+  background: var(--white);
+  border-radius: var(--r-md);
+  cursor: pointer;
+  transition: border-color .16s, box-shadow .16s, transform .12s, background .16s;
+  user-select: none;
+}
+.opt:hover { border-color: #cfcfcf; box-shadow: 0 4px 14px rgba(17,17,17,.06); }
+.opt:active { transform: translateY(1px); }
+.opt.sel {
+  border-color: var(--red);
+  box-shadow: 0 0 0 3px rgba(225,36,27,.12);
+}
+.opt .tick {
+  position: absolute;
+  top: 9px; right: 9px;
+  width: 22px; height: 22px;
+  border-radius: 999px;
+  background: var(--red);
+  display: grid; place-items: center;
+  opacity: 0;
+  transform: scale(.6);
+  transition: opacity .16s, transform .16s;
+}
+.opt.sel .tick { opacity: 1; transform: scale(1); }
+
+/* primary CTA */
+.cta {
+  appearance: none;
+  border: 0;
+  width: 100%;
+  background: var(--red-cta);
+  color: #fff;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 26px;
+  letter-spacing: .03em;
+  padding: 18px 20px;
+  border-radius: var(--r-md);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  box-shadow: 0 8px 22px rgba(228,27,37,.32);
+  transition: transform .12s, box-shadow .16s, background .16s;
+  white-space: nowrap;
+}
+.cta:hover { background: #cf1822; box-shadow: 0 10px 26px rgba(228,27,37,.4); }
+.cta:active { transform: translateY(2px); box-shadow: 0 4px 14px rgba(228,27,37,.34); }
+.cta:disabled { background: #d9d9d9; color: #fff; box-shadow: none; cursor: not-allowed; }
+
+@keyframes pop-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@keyframes float-up { from { opacity: 0; transform: translateY(8px) scale(.96); } to { opacity: 1; transform: none; } }
