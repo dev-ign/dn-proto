@@ -23,7 +23,7 @@ export default function VisitStore() {
 
       <div className="visit-store__image-container">
         <img
-          src="/images/store.jpg"
+          src="/images/store.png"
           alt="Discount Nutrition Tampa store"
           className="visit-store__image"
         />

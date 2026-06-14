@@ -13,7 +13,7 @@ export default function PerformanceSupplements() {
     <section className="performance-supplements">
       <div className="performance-supplements__image-wrap">
         <img
-          src="/images/performance-section.jpg"
+          src="/images/performance-section.png"
           alt="Performance supplements"
           className="performance-supplements__image"
         />

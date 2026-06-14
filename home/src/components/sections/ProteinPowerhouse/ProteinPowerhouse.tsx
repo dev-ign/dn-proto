@@ -32,7 +32,7 @@ export default function ProteinPowerhouse() {
 
       <div className="protein-powerhouse__image-wrap">
         <img
-          src="/images/protein-section.jpg"
+          src="/images/protein-section.png"
           alt="Protein supplements"
           className="protein-powerhouse__image"
         />

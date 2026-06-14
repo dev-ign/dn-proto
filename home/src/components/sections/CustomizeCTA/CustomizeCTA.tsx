@@ -6,7 +6,7 @@ export default function CustomizeCTA() {
     <section className="customize-cta">
       <div className="customize-cta__image-wrap">
         <img
-          src="/images/customize-cta.jpg"
+          src="/images/customize-cta.png"
           alt="Build your smoothie"
           className="customize-cta__image"
         />

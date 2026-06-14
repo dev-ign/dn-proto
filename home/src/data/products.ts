@@ -7,7 +7,7 @@ export const FEATURED_PRODUCTS: ProductItem[] = [
     category: 'PROTEIN',
     price: 49.99,
     rating: 4.5,
-    image: '/images/product-whey.jpg',
+    image: '/images/product-whey.png',
   },
   {
     id: 'pre-workout',
@@ -15,7 +15,7 @@ export const FEATURED_PRODUCTS: ProductItem[] = [
     category: 'ENERGY',
     price: 39.99,
     rating: 4.5,
-    image: '/images/product-preworkout.jpg',
+    image: '/images/product-preworkout.png',
   },
   {
     id: 'bcaas',
@@ -23,7 +23,7 @@ export const FEATURED_PRODUCTS: ProductItem[] = [
     category: 'RECOVERY',
     price: 29.99,
     rating: 4.5,
-    image: '/images/product-bcaa.jpg',
+    image: '/images/product-bcaa.png',
   },
   {
     id: 'creatine',
@@ -31,6 +31,6 @@ export const FEATURED_PRODUCTS: ProductItem[] = [
     category: 'STRENGTH',
     price: 24.99,
     rating: 4.5,
-    image: '/images/product-creatine.jpg',
+    image: '/images/product-creatine.png',
   },
 ]

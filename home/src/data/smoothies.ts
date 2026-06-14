@@ -5,25 +5,25 @@ export const POPULAR_SMOOTHIES: SmoothieItem[] = [
     id: 'strawberry-blast',
     name: 'Strawberry Blast',
     price: 8.99,
-    image: '/images/smoothie-strawberry.jpg',
+    image: '/images/smoothie-strawberry.png',
   },
   {
     id: 'chocolate-delight',
     name: 'Chocolate Delight',
     price: 8.99,
-    image: '/images/smoothie-chocolate.jpg',
+    image: '/images/smoothie-chocolate.png',
   },
   {
     id: 'very-berry',
     name: 'Very Berry',
     price: 8.99,
-    image: '/images/smoothie-berry.jpg',
+    image: '/images/smoothie-berry.png',
   },
   {
     id: 'biscoff-flight',
     name: 'Biscoff Flight',
     price: 8.99,
-    image: '/images/smoothie-biscoff.jpg',
+    image: '/images/smoothie-biscoff.png',
   },
 ]
 
